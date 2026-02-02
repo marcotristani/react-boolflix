@@ -1,5 +1,16 @@
+import { useSearch } from "../context/SearchContext";
+
+import MovieCard from "../components/MovieCard";
+
 function SeriesTv() {
-  return <h1>SeriesTv</h1>;
+  const { seriesTvList } = useSearch();
+  return (
+    <ul>
+      {seriesTvList.map((seriesTv) => (
+        <MovieCard key={seriesTv.id} movie={seriesTv} />
+      ))}
+    </ul>
+  );
 }
 
 export default SeriesTv;
