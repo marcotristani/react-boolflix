@@ -7,7 +7,11 @@ function SeriesTv() {
   return (
     <ul className="card-container">
       {seriesTvList.map((seriesTv) => (
-        <MovieCard key={seriesTv.id} movie={seriesTv} />
+        <MovieCard
+          key={seriesTv.id}
+          movie={seriesTv}
+          endpointActor={`https://api.themoviedb.org/3/tv/${seriesTv.id}/credits`}
+        />
       ))}
     </ul>
   );

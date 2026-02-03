@@ -4,17 +4,27 @@ import MovieCard from "../components/MovieCard";
 
 function Homepage() {
   const { movieList, seriesTvList } = useSearch();
-  const [all, setAll] = useState([]);
-  useEffect(
-    () =>
-      setAll([...movieList, ...seriesTvList].sort(() => Math.random() - 0.5)),
-    [movieList, seriesTvList],
-  );
+  // const [all, setAll] = useState([]);
+  // useEffect(
+  //   () => setAll([...movieList, ...seriesTvList]),
+  //   [movieList, seriesTvList],
+  // );
 
   return (
     <ul className="card-container">
-      {all.map((movie) => (
-        <MovieCard key={movie.id} movie={movie} />
+      {seriesTvList.map((seriesTv) => (
+        <MovieCard
+          key={seriesTv.id}
+          movie={seriesTv}
+          endpointActor={`https://api.themoviedb.org/3/tv/${seriesTv.id}/credits`}
+        />
+      ))}
+      {movieList.map((movie) => (
+        <MovieCard
+          key={movie.id}
+          movie={movie}
+          endpointActor={`https://api.themoviedb.org/3/movie/${movie.id}/credits`}
+        />
       ))}
     </ul>
   );

@@ -18,7 +18,9 @@ function SearchProvider({ children }) {
   function fetchList(endpoint, setterList) {
     axios
       .get(`${endpoint}?api_key=${endpointKey}&query=${queryString.trim()}`)
-      .then((response) => setterList(response.data.results))
+      .then((response) =>
+        setterList(response.data.results.sort((a, b) => a.id - b.id)),
+      )
       .catch((error) => {
         alert(error.message);
       });

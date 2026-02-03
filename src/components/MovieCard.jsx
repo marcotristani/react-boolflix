@@ -2,11 +2,13 @@ import ReactCountryFlag from "react-country-flag";
 import countries from "../data/countries";
 import { FaFlag } from "react-icons/fa";
 import { FaStar } from "react-icons/fa";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 const urlImageBase = "https://image.tmdb.org/t/p/";
 const widthImage = "w342";
 
-function MovieCard({ movie }) {
+function MovieCard({ movie, endpointActor }) {
   const {
     title,
     original_title,
@@ -16,7 +18,21 @@ function MovieCard({ movie }) {
     original_name,
     poster_path,
     overview,
+    id,
   } = movie;
+
+  const endpointBase = endpointActor;
+  const endpointKey = import.meta.env.VITE_API_KEY;
+  const [actors, setActors] = useState([]);
+
+  function fetchActors() {
+    axios
+      .get(`${endpointBase}?api_key=${endpointKey}`)
+      .then((response) => setActors(response.data.cast));
+  }
+
+  useEffect(fetchActors, []);
+  console.log(actors);
 
   const vote = Math.ceil(parseFloat(vote_average / 2));
   const stringStars = [];
@@ -51,14 +67,14 @@ function MovieCard({ movie }) {
           Vote:<span className="vote-stars">{stringStars}</span>
         </p>
         <p>
-          Overview:{" "}
-          <span>
-            {overview}dsgg Lorem ipsum dolor, sit amet consectetur adipisicing
-            elit. Suscipit, ea totam dignissimos, soluta eos labore magni
-            voluptatum est, fugiat blanditiis ipsa optio fugit aspernatur
-            perspiciatis autem nihil! Unde, odit maiores.
-          </span>
+          Overview:
+          <span>{overview}</span>
         </p>
+        <ul>
+          {actors.slice(0, 5).map((actor) => (
+            <li key={actor.id}>{actor.name}</li>
+          ))}
+        </ul>
       </div>
     </li>
   );
