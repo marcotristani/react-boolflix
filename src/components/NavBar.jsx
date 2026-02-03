@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
+import { FaSearch } from "react-icons/fa";
 
 import { useState } from "react";
 
@@ -31,6 +32,10 @@ function NavBar() {
           </li>
         ))}
       </ul>
+      <figure>
+        <img src="src\assets\logo_boolflix_mod.png" alt="" />
+      </figure>
+
       <form onSubmit={goResearch}>
         <input
           id="input-search"
@@ -39,7 +44,9 @@ function NavBar() {
           value={searchString}
           onChange={(e) => setSearchString(e.target.value)}
         />
-        <button>Cerca</button>
+        <button>
+          <FaSearch />
+        </button>
       </form>
     </nav>
   );

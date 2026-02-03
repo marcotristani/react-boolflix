@@ -12,7 +12,7 @@ function Homepage() {
   );
 
   return (
-    <ul>
+    <ul className="card-container">
       {all.map((movie) => (
         <MovieCard key={movie.id} movie={movie} />
       ))}

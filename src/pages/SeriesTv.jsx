@@ -5,7 +5,7 @@ import MovieCard from "../components/MovieCard";
 function SeriesTv() {
   const { seriesTvList } = useSearch();
   return (
-    <ul>
+    <ul className="card-container">
       {seriesTvList.map((seriesTv) => (
         <MovieCard key={seriesTv.id} movie={seriesTv} />
       ))}
