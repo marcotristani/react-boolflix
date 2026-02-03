@@ -84,14 +84,14 @@ main {
   .card-container {
     display: flex;
     flex-wrap: wrap;
-    gap: calc(((100%) - (342px * 4)) / 3);
+    justify-content: space-around;
+    gap: 30px;
 
     .movie-card {
       width: 342px;
       height: 500px;
       border: 3px solid yellow;
       position: relative;
-      margin-top: 40px;
 
       img {
         width: 100%;
@@ -161,22 +161,7 @@ main {
 
 /*RESPONSIVE*/
 
-@media screen and (max-width: 1500px) {
-  main .card-container {
-    gap: calc(((100%) - (342px * 3)) / 2);
-  }
-}
-
-@media screen and (max-width: 1150px) {
-  main .card-container {
-    gap: calc(((100%) - (342px * 2)));
-  }
-}
-
-@media screen and (max-width: 800px) {
-  main .card-container {
-    justify-content: center;
-  }
+@media screen and (max-width: 810px) {
   header figure {
     display: none;
   }
