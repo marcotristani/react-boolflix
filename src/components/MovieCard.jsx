@@ -70,6 +70,7 @@ function MovieCard({ movie, endpointActor }) {
           Overview:
           <span>{overview}</span>
         </p>
+        <p>Attori principali:</p>
         <ul>
           {actors.slice(0, 5).map((actor) => (
             <li key={actor.id}>{actor.name}</li>

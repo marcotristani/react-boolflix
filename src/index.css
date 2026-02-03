@@ -140,6 +140,13 @@ main {
             color: gold;
           }
         }
+
+        ul {
+          margin-left: 15px;
+          li {
+            list-style-type: circle;
+          }
+        }
       }
     }
     .description-card::-webkit-scrollbar {
